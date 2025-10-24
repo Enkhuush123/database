@@ -2,11 +2,11 @@ import { userModel } from "../../model/user-model.js";
 
 export const updateUser = async (req, res) => {
   const updateUser = req.body;
-  const { id } = req.params;
+
   console.log(req.body);
 
   await userModel.findByIdAndUpdate(
-    id,
+    updateUser.id,
     {
       email: updateUser.email,
       password: updateUser.password,
