@@ -10,7 +10,7 @@ const UserSchema = new Schema({
   phoneNumber: String,
   address: String,
   role: { type: String, enum: ["USER", "ADMIN"], default: "ADMIN" },
-  orderedFoods: { type: Schema.ObjectId, required: true, ref: "foodOrder" },
+  orderedFoods: { type: Schema.ObjectId, required: false, ref: "foodOrder" },
   ttl: { type: Date, required: true, default: Date.now },
   isVerified: Boolean,
   createdAt: { type: Date, required: true, default: Date.now },
