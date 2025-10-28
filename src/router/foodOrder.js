@@ -7,9 +7,10 @@ import { deleteFoodOrder } from "../resolver/food-order/delete-foodOrder.js";
 export const foodOrder = express.Router();
 
 foodOrder.get("/", getFoodOrder);
+foodOrder.get("/:userId", getFoodOrder);
 
 foodOrder.post("/", createFoodOrder);
 
-foodOrder.put("/", updateFoodOrder);
+foodOrder.put("/:updateFoodId", updateFoodOrder);
 
 foodOrder.delete("/", deleteFoodOrder);

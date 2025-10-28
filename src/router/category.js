@@ -10,6 +10,6 @@ category.get("/", getCategory);
 
 category.post("/", createCategory);
 
-category.put("/", updateCategory);
+category.put("/:categoryId", updateCategory);
 
-category.delete("/", deleteCategory);
+category.delete("/:catergoryId", deleteCategory);

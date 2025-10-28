@@ -2,8 +2,9 @@ import { foodOrderModel } from "../../model/food-order-model.js";
 
 export const getFoodOrder = async (req, res) => {
   try {
+    const { userId } = req.params;
     const orders = await foodOrderModel
-      .find()
+      .find({ user: userId })
       .populate("user")
       .populate("foodOrderItems.food");
 

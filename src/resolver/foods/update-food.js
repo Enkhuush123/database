@@ -1,10 +1,11 @@
 import { foodModel } from "../../model/food-model.js";
 
 export const updateFood = async (req, res) => {
+  const { foodId } = req.params;
   const updateFood = req.body;
 
   const updated = await foodModel.findByIdAndUpdate(
-    updateFood.id,
+    foodId,
     {
       foodName: updateFood.foodName,
       price: updateFood.price,

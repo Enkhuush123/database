@@ -14,7 +14,7 @@ export const signup = async (req, res) => {
 
   const newUser = userModel.create({
     email,
-    password: hashedPassword,›
+    password: hashedPassword,
     phoneNumber,
     address,
   });

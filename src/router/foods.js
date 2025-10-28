@@ -13,6 +13,6 @@ foods.get("/category/:categoryId", getFoodByCategory);
 
 foods.post("/", createFood);
 
-foods.put("/", updateFood);
+foods.put("/:foodId", updateFood);
 
-foods.delete("/", deleteFood);
+foods.delete("/:foodId", deleteFood);
