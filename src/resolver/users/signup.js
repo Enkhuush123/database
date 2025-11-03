@@ -17,29 +17,15 @@ export const signup = async (req, res) => {
     password: hashedPassword,
     phoneNumber,
     address,
+    role,
   });
 
-  const token = jwt.sign(
-    {
-      id: newUser._id,
-      email: newUser.email,
-      phoneNumber: newUser.phoneNumber,
-      address: newUser.address,
-      role: newUser.role,
-    },
-    process.env.JWT_SECRET || "secret-key",
-    {
-      expiresIn: "2h",
-    }
-  );
   res.status(200).json({
     message: "new user registered",
-    token,
     user: {
       id: newUser._id,
       email: newUser.email,
-      phoneNumber: newUser.phoneNumber,
-      address: newUser.address,
+      role: newUser.role,
     },
   });
 };
