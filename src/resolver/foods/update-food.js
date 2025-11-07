@@ -2,7 +2,10 @@ import { foodModel } from "../../model/food-model.js";
 
 export const updateFood = async (req, res) => {
   const { foodId } = req.params;
+  console.log(foodId, "foodId");
+
   const updateFood = req.body;
+  console.log(updateFood, "updateFood");
 
   const updated = await foodModel.findByIdAndUpdate(
     foodId,
@@ -19,5 +22,5 @@ export const updateFood = async (req, res) => {
   if (!updated) {
     return res.status(404).send("Foood not found");
   }
-  res.send("User updated");
+  res.status(200).json(updated);
 };

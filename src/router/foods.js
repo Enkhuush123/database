@@ -9,7 +9,7 @@ import { getFoodByCategory } from "../resolver/foods/get-foodbycategoryId.js";
 export const foods = express.Router();
 
 foods.get("/", getFoods);
-foods.get("/category/:categoryId", getFoodByCategory);
+foods.get("/:categoryId", getFoodByCategory);
 
 foods.post("/", createFood);
 

@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 export const deleteFood = async (req, res) => {
   try {
     const authHeader = req.headers.authorization;
+    console.log(authHeader, "header");
 
     if (!authHeader || !authHeader.startsWith("Bearer")) {
       return res.status(401).json({ message: "Invalid or expired token" });
@@ -10,6 +11,9 @@ export const deleteFood = async (req, res) => {
 
     const token = authHeader.split(" ")[1];
     const verified = jwt.verify(token, "secret-key");
+
+    console.log(verified, "verified");
+
     if (!verified) {
       return res.status(403).json({ message: "Invalid or expired token" });
     }
@@ -18,6 +22,8 @@ export const deleteFood = async (req, res) => {
     }
 
     const { foodId } = req.params;
+    console.log(foodId, "foodId");
+
     await foodModel.findByIdAndDelete(foodId);
     res.send("deleted");
   } catch (err) {

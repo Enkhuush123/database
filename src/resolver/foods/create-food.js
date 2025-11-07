@@ -2,7 +2,7 @@ import { foodModel } from "../../model/food-model.js";
 import jwt from "jsonwebtoken";
 
 export const createFood = async (req, res) => {
-  console.log(req.body);
+  console.log(req.body, "hehehee");
 
   try {
     const authHeader = req.headers.authorization;
