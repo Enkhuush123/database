@@ -13,5 +13,5 @@ export const getCategory = async (req, res) => {
       };
     })
   );
-  res.status(205).json(categories);
+  res.status(200).json(categories);
 };
