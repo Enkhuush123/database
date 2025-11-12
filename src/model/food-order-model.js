@@ -20,7 +20,7 @@ const foodOrderSchema = new Schema({
   foodOrderItems: [foodOrderItem],
   status: {
     type: String,
-    enum: ["PENDING", "CANCELED", "DELIVERED"],
+    enum: ["PENDING", "CANCELLED", "DELIVERED"],
     default: "PENDING",
   },
   createdAt: { type: Date, required: true, default: Date.now },
