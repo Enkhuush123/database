@@ -1,8 +1,23 @@
-import { foodModel } from "../../model/food-model.js";
 import { foodOrderModel } from "../../model/food-order-model.js";
 
 export const createFoodOrder = async (req, res) => {
-  const foodOrder = req.body;
-  await foodOrderModel.create(foodOrder);
-  res.send("Food ordered");
+  try {
+    const { foodOrderItems, totalPrice, user, address } = req.body;
+
+    if (!user || !foodOrderItems || foodOrderItems.length === 0) {
+      return res.status(400).send("Missing required fields");
+    }
+
+    const newOrder = await foodOrderModel.create({
+      user,
+      totalPrice,
+      foodOrderItems,
+      address,
+    });
+
+    res.status(201).json(newOrder);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error while creating order");
+  }
 };

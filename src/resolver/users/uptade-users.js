@@ -1,22 +1,29 @@
 import { userModel } from "../../model/user-model.js";
 
 export const updateUser = async (req, res) => {
-  const updateUser = req.body;
+  try {
+    const data = req.body;
 
-  console.log(req.body);
+    const updatedUser = await userModel.findByIdAndUpdate(
+      data.id,
+      {
+        email: data.email,
+        password: data.password,
+        phoneNumber: data.phoneNumber,
+        address: data.address,
+        role: data.role,
+        orderedFoods: data.orderedFoods,
+      },
+      { new: true }
+    );
 
-  await userModel.findByIdAndUpdate(
-    updateUser.id,
-    {
-      email: updateUser.email,
-      password: updateUser.password,
-      phoneNumber: updateUser.phoneNumber,
-      address: updateUser.address,
-      role: updateUser.role,
-      orderedFoods: updateUser.orderedFoods,
-    },
-    { new: true }
-  );
-
-  res.send("User uptaded");
+    res.status(200).json({
+      message: "User updated",
+      user: updatedUser,
+      address: updatedUser.address,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Update error", error: err });
+  }
 };
