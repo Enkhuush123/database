@@ -15,7 +15,11 @@ export const createFoodOrder = async (req, res) => {
       address,
     });
 
-    res.status(201).json(newOrder);
+    const populatedOrder = await foodOrderModel
+      .findById(newOrder._id)
+      .populate("foodOrderItems.food");
+
+    res.status(201).json(populatedOrder);
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error while creating order");

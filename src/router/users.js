@@ -4,6 +4,7 @@ import { updateUser } from "../resolver/users/uptade-users.js";
 import { deleteUser } from "../resolver/users/delete-users.js";
 import { signup } from "../resolver/users/signup.js";
 import { signin } from "../resolver/users/signin.js";
+import { checkEmail } from "../resolver/users/check-email.js";
 
 export const user = express.Router();
 
@@ -12,3 +13,4 @@ user.post("/sign-up", signup);
 user.post("/sign-in", signin);
 user.put("/", updateUser);
 user.delete("/", deleteUser);
+user.post("/check-email", checkEmail);
