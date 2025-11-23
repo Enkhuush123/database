@@ -2,12 +2,6 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
-const foodOrderItem = [
-  {
-    food: { type: Schema.ObjectId, require: true, ref: "food" },
-    quantity: { type: Number, require: true },
-  },
-];
 
 const foodOrderSchema = new Schema({
   id: ObjectId,
@@ -17,7 +11,13 @@ const foodOrderSchema = new Schema({
     ref: "user",
   },
   totalPrice: Number,
-  foodOrderItems: [foodOrderItem],
+  foodOrderItems: [
+    {
+      food: { type: Schema.ObjectId, require: true, ref: "food" },
+      quantity: { type: Number, require: true },
+    },
+  ],
+
   address: { type: String, required: true },
   status: {
     type: String,
