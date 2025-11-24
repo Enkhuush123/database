@@ -13,8 +13,8 @@ const foodOrderSchema = new Schema({
   totalPrice: Number,
   foodOrderItems: [
     {
-      food: { type: Schema.ObjectId, require: true, ref: "food" },
-      quantity: { type: Number, require: true },
+      food: { type: Schema.ObjectId, required: true, ref: "food" },
+      quantity: { type: Number, required: true },
     },
   ],
 
