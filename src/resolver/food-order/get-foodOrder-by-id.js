@@ -1,11 +1,12 @@
-import { foodModel } from "../../model/food-model.js";
 import { foodOrderModel } from "../../model/food-order-model.js";
 
-export const getFoodOrderbyId = async (req, res) => {
-  const { id } = req.params;
-  const OrderFood = await foodOrderModel.findById(id);
-  if (!OrderFood) {
-    res.send("food not found");
-  }
-  res.status(200).json(OrderFood);
+export const getFoodOrderById = async (req, res) => {
+  const { userId } = req.params;
+  console.log(userId);
+  const orders = await foodOrderModel
+    .find({ user: userId })
+    .populate("user")
+    .populate("foodOrderItems.food");
+
+  res.status(200).json(orders);
 };
